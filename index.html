@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Купить дрова колотые с доставкой в Екатеринбурге и Свердловской области</title>
+    <style>
+        body { 
+            background-color: #fdfaf6; 
+            color: #292524; 
+            font-family: sans-serif; 
+            padding: 20px; 
+        }
+        
+        /* ШАПКА */
+        header { 
+            background: white; 
+            padding: 20px 40px; 
+            border-radius: 12px; 
+            margin-bottom: 20px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            border-bottom: 2px solid #f5ece2;
+        }
+        .logo { 
+            color: #15803d; 
+            font-weight: 900; 
+            font-size: 24px; 
+            text-decoration: none;
+        }
+        .logo span { 
+            color: #d97706; 
+        }
+        
+        /* ПЕРВЫЙ ЭКРАН */
+        .hero { 
+            background: #fffbeb; 
+            padding: 45px 50px; 
+            border-radius: 24px; 
+            margin-bottom: 25px; 
+            border: 1px solid #fcd34d;
+        }
+        h1 { 
+            font-size: 28px; 
+            margin-bottom: 15px; 
+            color: #451a03; 
+            font-weight: 800;
+        }
+        
+        /* КНОПКА И СОЦСЕТИ */
+        .btn { 
+            background: #d97706; 
+            color: white; 
+            padding: 15px 30px; 
+            border-radius: 8px; 
+            text-decoration: none; 
+            display: inline-block; 
+            font-weight: bold; 
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+        }
+        .btn:hover { 
+            background: #b45309; 
+        }
+        .social-box {
+            display: inline-flex;
+            gap: 10px;
+            margin-left: 20px;
+            vertical-align: middle;
+        }
+        .soc-link {
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            padding: 12px 16px;
+            border-radius: 8px;
+            color: white;
+        }
+        .tg { background: #22a2df; }
+        .vk { background: #0077ff; }
+        .wa { background: #25d366; }
+
+        /* КАТАЛОГ ДРОВ */
+        .grid { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 20px; 
+            margin-top: 25px; 
+        }
+        .card { 
+            background: white; 
+            padding: 25px; 
+            border-radius: 16px; 
+            border: 1px solid #e7e5e4; 
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .card-wide {
+            grid-column: span 3;
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+        }
+        .card h3 { 
+            color: #15803d; 
+            margin-bottom: 10px; 
+            font-size: 18px;
+        }
+        .price {
+            display: block;
+            font-weight: bold;
+            color: #d97706;
+            margin: 15px 0;
+            font-size: 16px;
+        }
+
+        /* НОВЫЙ БЛОК: ПРЕИМУЩЕСТВА */
+        .features-section {
+            margin-top: 50px;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .feature-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #e7e5e4;
+            text-align: center;
+        }
+        .feature-card icon {
+            font-size: 28px;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .feature-card h4 {
+            font-size: 15px;
+            margin-bottom: 8px;
+            color: #451a03;
+        }
+        .feature-card p {
+            font-size: 13px;
+            color: #78716c;
+            line-height: 1.4;
+        }
+
+        /* НОВЫЙ БЛОК: ВОПРОСЫ И ОТВЕТЫ */
+        .faq-section {
+            margin-top: 50px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .faq-item {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #e7e5e4;
+        }
+        .faq-item b {
+            display: block;
+            color: #15803d;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+        .faq-item p {
+            font-size: 14px;
+            color: #57534e;
+            line-height: 1.5;
+        }
+
+        /* ВССПЛЫВАЮЩАЯ ФОРМА */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .modal-window {
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            max-width: 400px;
+            width: 90%;
+            position: relative;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px; right: 15px;
+            font-size: 24px;
+            background: none; border: none;
+            cursor: pointer;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+        .form-group label {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .form-control {
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        @media (max-width: 900px) {
+            .grid { grid-template-columns: 1fr; }
+            .card-wide { grid-column: span 1; }
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
+            header { flex-direction: column; text-align: center; gap: 15px; }
+        }
+        @media (max-width: 500px) {
+            .features-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ШАПКА -->
+    <header>
+        <a href="#" class="logo">🌲 Дрова<span>Урала</span></a>
+        <div style="text-align: right;">
+            <span style="color: #15803d; font-weight: bold; font-size: 12px;">📍 ЕКАТЕРИНБУРГ И ОБЛАСТЬ</span><br>
+            <a href="tel:+79920927711" style="color: black; font-weight: bold; text-decoration: none;">+7 (992) 092-77-11</a><br>
+            <a href="tel:+79920071447" style="color: black; font-weight: bold; text-decoration: none;">+7 (992) 007-14-47</a>
+        </div>
+    </header>
+
+    <!-- ПЕРВЫЙ ЭКРАН -->
+    <div class="hero">
+        <h1>ДРОВА КОЛОТЫЕ С ДОСТАВКОЙ ОТ ПРОИЗВОДИТЕЛЯ</h1>
+        <p style="margin-bottom: 25px; color: #57534e; font-size: 16px;">Честный объём, плотная укладка. Собственное производство. Доставим в день заказа по Екатеринбургу и пригороду!</p>
+        
+        <button class="btn" onclick="openModal()">Рассчитать доставку</button>
+        
+        <div class="social-box">
+            <a href="#" class="soc-link tg">Телеграм</a>
+            <a href="#" class="soc-link vk">ВКонтакте</a>
+            <a href="#" class="soc-link wa">Ватсап</a>
+        </div>
+    </div>
+
+    <!-- КАТАЛОГ -->
+    <h2 style="text-align: center; margin-top: 30px;">НАШ АССОРТИМЕНТ ДРОВ</h2>
+
+    <div class="grid">
+        <div class="card">
+            <div>
+                <h3>БЕРЕЗОВЫЕ ДРОВА</h3>
+                <p>Идеальный вариант для бани, камина и печи. Дают максимальный жар, долго горят и не стреляют угольками.</p>
+                <span class="price">от 1 800 руб / куб</span>
+            </div>
+            <button class="btn" style="padding: 10px; font-size: 14px;" onclick="openModal()">Заказать</button>
+        </div>
+
+        <div class="card">
+            <div>
+                <h3>ОСИНОВЫЕ ДРОВА</h3>
+                <p>При горении осина выделяет вещества, способные эффективно выжигать сажу и копоть из дымохода.</p>
+                <span class="price">от 1 600 руб / куб</span>
+            </div>
+            <button class="btn" style="padding: 10px; font-size: 14px;" onclick="openModal()">Заказать</button>
+        </div>
+
+        <div class="card">
+            <div>
+                <h3>ХВОЙНЫЕ ДРОВА</h3>
+                <p>Быстро разгораются, отлично пахнут смолой. Идеально подходят для быстрого прогрева помещений.</p>
+                <span class="price">от 1 400 руб / куб</span>
+            </div>
+            <button class="btn" style="padding: 10px; font-size: 14px;" onclick="openModal()">Заказать</button>
+        </div>
+
+        <div class="card card-wide">
+            <h3>БЫСТРАЯ ДОСТАВКА СОБСТВЕННЫМ ТРАНСПОРТОМ</h3>
+            <p>Привезем дрова навалом или в аккуратной укладке машинами Газель, ЗИЛ, КамАЗ. Доставка рассчитывается от удаленности вашего населенного пункта от Екатеринбурга. Разгрузка бесплатная!</p>
+        </div>
+    </div>
+
+    <!-- НОВЫЙ БЛОК: ПРЕИМУЩЕСТВА -->
+    <section class="features-section">
+        <h2 style="text-align: center;">ПОЧЕМУ ДРОВА ЗАКАЗЫВАЮТ У НАС</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <icon>⚖️</icon>
+                <h4>Честный объем</h4>
+                <p>Привозим ровно столько кубов, сколько вы заказали. Никаких пустых пространств.</p>
+            </div>
+            <div class="feature-card">
+                <icon>🪓</icon>
+                <h4>Правильный раскол</h4>
+                <p>Дрова оптимального размера (35-40 см). Идеально подходят под стандартные топки.</p>
+            </div>
+            <div class="feature-card">
+                <icon>🍂</icon>
+                <h4>Без гнили и трухи</h4>
